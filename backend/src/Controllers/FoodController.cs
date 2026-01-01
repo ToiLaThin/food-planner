@@ -1,12 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 
-public class Food
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public int? FoodGroupId { get; set; }
-}
-
 public record PaginateCommand
 {
     public int Page { get; set; } = 1;
@@ -19,15 +12,18 @@ public record PaginateCommand
 [ApiController]
 public class FoodController: ControllerBase
 {
+
+    private readonly IFoodRepository _foodRepository;
+    public FoodController(IFoodRepository foodRepository)
+    {
+        _foodRepository = foodRepository;
+    }
+
     [HttpGet]
     [Route("foods")]
     public async Task<IActionResult> GetPaginatedList([FromQuery] PaginateCommand command)
     {
-        var result = new List<Food>()
-        {
-            new Food() { Id = 1, Name = "Chicken" },
-            new Food() { Id = 2, Name = "Egg" },
-        };
+        var result = await _foodRepository.GetPaginatedListAsync(command);
         return Ok(result); //200
     }
 
@@ -35,14 +31,17 @@ public class FoodController: ControllerBase
     [Route("foods/{id:int}")]
     public async Task<IActionResult> GetById(int id)
     {
-        var foods = new List<Food>()
-        {
-            new Food() { Id = 1, Name = "Chicken" },
-            new Food() { Id = 2, Name = "Egg" },
-        };
-        var result = foods.Where(x => x.Id == id).FirstOrDefault();
+        var result = await _foodRepository.GetByIdAsync(id);
         if (result is null)
             return NotFound(); //404
         return Ok(result); //200
+    }
+
+    [HttpPost]
+    [Route("foods/{id:int}")]
+    public async Task<IActionResult> Add([FromBody] Food food)
+    {
+        var result = await _foodRepository.AddAsync(food);
+        return Ok(result);
     }
 }
