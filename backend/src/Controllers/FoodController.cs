@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 public record PaginateCommand
@@ -28,6 +29,7 @@ public class FoodController: ControllerBase
     }
 
     [HttpGet]
+    [Authorize]
     [Route("foods/{id:int}")]
     public async Task<IActionResult> GetById(int id)
     {
