@@ -1,0 +1,11 @@
+<h2>Foods</h2>
+<div *ngFor="let food of foods">
+    <h3>
+        <a [title]="food.name + ' details'">
+            {{ food.name }}
+        </a>
+    </h3>
+    <p *ngIf="food.description">
+        Description: {{ food.description }}
+    </p>
+</div>
