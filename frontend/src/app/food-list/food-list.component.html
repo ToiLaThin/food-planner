@@ -1,5 +1,5 @@
 <h2>Foods</h2>
-<div *ngFor="let food of foods">
+<div *ngFor="let food of foods$ | async">
     <h3>
         <a [title]="food.name + ' details'"
            [routerLink]="['/foods', food.id]">

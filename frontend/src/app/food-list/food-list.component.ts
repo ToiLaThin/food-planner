@@ -1,13 +1,20 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Food, foods } from "../food";
+import { FoodService } from "../food.service";
+import { Observable } from "rxjs";
 @Component({
     selector: 'fp-food-list',
     templateUrl: './food-list.component.html',
     styleUrl: './food-list.component.scss'
 })
-export class FoodListComponent {
-    foods: Food[] = foods;
+export class FoodListComponent implements OnInit {
+    foods$!: Observable<Food[]>;
 
+    constructor(private foodService: FoodService) {}
+
+    ngOnInit(): void {
+        this.foods$ = this.foodService.getFoodPaginated();
+    }
     share() {
         window.alert("Some product 's been shared!");
     }
