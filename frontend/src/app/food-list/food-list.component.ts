@@ -7,4 +7,12 @@ import { Food, foods } from "../food";
 })
 export class FoodListComponent {
     foods: Food[] = foods;
+
+    share() {
+        window.alert("Some product 's been shared!");
+    }
+
+    onNotify(food: Food) {
+        window.alert(`You will be notified when the ${food.name} goes on sale`);
+    }
 }

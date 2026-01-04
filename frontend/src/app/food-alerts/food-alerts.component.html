@@ -1,0 +1,3 @@
+<p *ngIf="food && food.description != null">
+    <button type="button" (click)="notify.emit(food)">Notify me</button>
+</p>

@@ -1,11 +1,18 @@
 <h2>Foods</h2>
 <div *ngFor="let food of foods">
     <h3>
-        <a [title]="food.name + ' details'">
+        <a [title]="food.name + ' details'"
+           [routerLink]="['/foods', food.id]">
             {{ food.name }}
         </a>
     </h3>
     <p *ngIf="food.description">
         Description: {{ food.description }}
     </p>
+
+    <button type="button" 
+        (click)="share()">Share</button>
+    <fp-food-alerts 
+        [food]="food" 
+        (notify)="onNotify($event)"></fp-food-alerts>
 </div>
