@@ -11,7 +11,9 @@ public class FoodDbContext: DbContext
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfiguration(new FoodEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new FoodGroupEntityConfiguration());
     }
 
     public DbSet<Food> Foods { get; set; }
+    public DbSet<FoodGroup> FoodGroups { get; set; }
 }
