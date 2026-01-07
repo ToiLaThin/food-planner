@@ -1,0 +1,27 @@
+.navbar-container {
+    padding: 8px 19px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    padding: 8px;
+    font-size: 24px;
+    color: yellow;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navlinks-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    & .nav-link {
+        padding: 8px;
+        color: white;
+    }
+}

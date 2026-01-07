@@ -1,5 +1,8 @@
-<a [routerLink]="['/']">
-  <h1>My Store</h1>
-</a>
 
-<a class="button fancy-button"><em class="material-icons">shopping_cart</em>Checkout</a>
+<nav class="navbar-container bg-primary">
+  <a class="navbar-brand" [routerLink]="['/']">Food Planner</a>
+  <div class="navlinks-container">
+    <a class="nav-link" [routerLink]="['/food-groups']">List Food Group</a>
+    <a class="nav-link" [routerLink]="['/food-groups', 'new']">New Food Group</a>
+  </div>
+</nav>

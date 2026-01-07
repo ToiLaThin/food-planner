@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Food, foods } from "../food";
-import { FoodService } from "../food.service";
+import { FoodService } from "../services/food.service";
 import { Observable } from "rxjs";
 @Component({
     selector: 'fp-food-list',

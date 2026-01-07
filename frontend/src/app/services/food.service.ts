@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { Food } from "./food";
+import { Food } from "../food";
 import { HttpClient } from "@angular/common/http";
-import { environment } from "../environments/environment";
+import { environment } from "../../environments/environment";
 
 interface FoodPaginateCommand {
     page: number;

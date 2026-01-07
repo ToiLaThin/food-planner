@@ -8,7 +8,7 @@ public class FoodGroup
 
     public string MainBenefit { get; set; }
 
-    public ICollection<Food> Foods { get; set; }
+    public ICollection<Food>? Foods { get; set; }
 }
 
 public class FoodGroupEntityConfiguration : IEntityTypeConfiguration<FoodGroup>

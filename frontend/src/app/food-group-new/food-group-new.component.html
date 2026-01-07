@@ -1,0 +1,12 @@
+<form [formGroup]="foodGroupForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="foodGroupName">Name</label>
+        <input id="foodGroupName" type="text" formControlName="name">
+    </div>
+    <div class="form-group">
+        <label for="foodGroupMainBenefit">Main Benefit</label>
+        <input id="foodGroupMainBenefit" type="text" formControlName="mainBenefit">
+    </div>
+
+    <button type="submit">Confirm</button>
+</form>

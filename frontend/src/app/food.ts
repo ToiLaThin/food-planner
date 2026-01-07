@@ -5,6 +5,12 @@ export interface Food {
     description: string | null;
 }
 
+export interface FoodGroup {
+    id: number;
+    name: string;
+    mainBenefit: string | null;
+}
+
 export const foods: Food[] = [
     {
         id: 1,

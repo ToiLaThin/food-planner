@@ -21,7 +21,7 @@ public class FoodGroupController: ControllerBase
 
     [HttpPost]
     [Route("food-groups")]
-    public async Task<IActionResult> Add(FoodGroup foodGroup)
+    public async Task<IActionResult> Add([FromBody] FoodGroup foodGroup)
     {
         var results = await _foodGroupRepository.AddAsync(foodGroup);
         return Ok(results);
