@@ -1,0 +1,8 @@
+<div class="card">
+    <p>{{foodGroup?.name}}</p>
+    <p>{{foodGroup?.mainBenefit}}</p>
+    <div style="display: flex; justify-content: flex-start; align-items: center;">
+        <button class="btn btn-primary" (click)="editNotify.emit(foodGroup)">Edit</button>
+        <button class="btn btn-danger" (click)="deleteNotify.emit(foodGroup)">Delete</button>
+    </div>
+</div>

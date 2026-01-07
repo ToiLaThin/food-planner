@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Food, foods } from "../food";
+import { Food } from "../food";
 import { FoodService } from "../services/food.service";
 import { Observable } from "rxjs";
 @Component({

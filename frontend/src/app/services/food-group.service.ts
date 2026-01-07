@@ -14,4 +14,12 @@ export class FoodGroupService {
     getFoodGroupList() {
         return this.httpClient.get<FoodGroup[]>(`${environment.apiUrl}/api/v1/food-groups`);
     }
+
+    editFoodGroup(foodGroup: FoodGroup) {
+        return this.httpClient.put(`${environment.apiUrl}/api/v1/food-groups/${foodGroup.id}/edit`, foodGroup);
+    }
+
+    deleteFoodGroup(foodGroup: FoodGroup) {
+        return this.httpClient.delete(`${environment.apiUrl}/api/v1/food-groups/${foodGroup.id}/delete`);
+    }
 }

@@ -2,7 +2,25 @@
 <nav class="navbar-container bg-primary">
   <a class="navbar-brand" [routerLink]="['/']">Food Planner</a>
   <div class="navlinks-container">
-    <a class="nav-link" [routerLink]="['/food-groups']">List Food Group</a>
-    <a class="nav-link" [routerLink]="['/food-groups', 'new']">New Food Group</a>
+    <div class="dropdown">
+      <button class="dropbtn">
+        Food
+        <i>X</i>
+      </button>
+      <div class="dropdown-content">
+        <a [routerLink]="['/foods']">List Foods</a>
+        <a [routerLink]="['/food-groups', 'new']">New Food</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">
+        Food Group
+        <i>X</i>
+      </button>
+      <div class="dropdown-content">
+        <a [routerLink]="['/food-groups']">List Food Group</a>
+        <a [routerLink]="['/food-groups', 'new']">New Food Group</a>
+      </div>
+    </div>
   </div>
 </nav>

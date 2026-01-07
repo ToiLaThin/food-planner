@@ -17,5 +17,11 @@ export class FoodGroupListComponent implements OnInit {
 
     foodGroupList$!: Observable<FoodGroup[]>;
 
+    onDelete(foodGroup: FoodGroup) {
+        this.foodGroupService.deleteFoodGroup(foodGroup).subscribe();
+    }
 
+    onEdit(foodGroup: FoodGroup) {
+        this.foodGroupService.editFoodGroup(foodGroup).subscribe();
+    }
 }

@@ -10,6 +10,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FoodGroupListComponent } from "./food-group-list/food-group-list.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { FoodGroupNewComponent } from "./food-group-new/food-group-new.component";
+import { FoodGroupDetailsComponent } from "./food-group-details/food-group-details.component";
 
 @NgModule({
     imports: [
@@ -21,7 +22,6 @@ import { FoodGroupNewComponent } from "./food-group-new/food-group-new.component
             { path: 'foods/:foodId', component: FoodDetailsComponent },
             { path: 'food-groups', component: FoodGroupListComponent },
             { path: 'food-groups/new', component: FoodGroupNewComponent },
-
         ])
     ],
     declarations: [
@@ -31,7 +31,8 @@ import { FoodGroupNewComponent } from "./food-group-new/food-group-new.component
         FoodAlertsComponent, 
         FoodDetailsComponent,
         FoodGroupListComponent,
-        FoodGroupNewComponent
+        FoodGroupNewComponent,
+        FoodGroupDetailsComponent,
     ],
     bootstrap: [
         AppComponent

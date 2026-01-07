@@ -1,3 +1,5 @@
-<p *ngFor="let foodGroup of foodGroupList$ | async">
-    {{foodGroup.name}} - {{foodGroup.mainBenefit}}
-</p>
+<div *ngFor="let foodGroup of foodGroupList$ | async">
+    <fp-food-group-details [foodGroup]="foodGroup" 
+        (deleteNotify)="onDelete($event)"
+        (editNotify)="onEdit($event)"></fp-food-group-details>
+</div>
