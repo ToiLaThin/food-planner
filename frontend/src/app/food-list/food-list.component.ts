@@ -13,7 +13,8 @@ export class FoodListComponent implements OnInit {
     constructor(private foodService: FoodService) {}
 
     ngOnInit(): void {
-        this.foods$ = this.foodService.getFoodPaginated();
+        this.foods$ = this.foodService.paginatedFoods$;
+        this.foodService.getFoodPaginated().subscribe();
     }
     share() {
         window.alert("Some product 's been shared!");

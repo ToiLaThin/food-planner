@@ -12,7 +12,8 @@ export class FoodGroupListComponent implements OnInit {
     constructor(private foodGroupService: FoodGroupService) {}
 
     ngOnInit(): void {
-        this.foodGroupList$ = this.foodGroupService.getFoodGroupList();
+        this.foodGroupList$ = this.foodGroupService.foodGroups$;
+        this.foodGroupService.getFoodGroupList().subscribe();
     }
 
     foodGroupList$!: Observable<FoodGroup[]>;
