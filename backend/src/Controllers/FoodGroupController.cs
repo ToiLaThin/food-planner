@@ -5,9 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 public class FoodGroupController: ControllerBase
 {
     private readonly IFoodGroupRepository _foodGroupRepository;
-    public FoodGroupController(IFoodGroupRepository foodGroupRepository)
+    private readonly IFoodGroupService _foodGroupService;
+    public FoodGroupController(IFoodGroupRepository foodGroupRepository, IFoodGroupService foodGroupService)
     {
         _foodGroupRepository = foodGroupRepository;
+        _foodGroupService = foodGroupService;
     }
 
 
@@ -23,10 +25,10 @@ public class FoodGroupController: ControllerBase
     [Route("food-groups/{id:int}")]
     public async Task<IActionResult> Get([FromRoute] int id)
     {
-        var results = await _foodGroupRepository.GetAsync(id);
-        if (results is null)
+        var serviceResult = await _foodGroupService.ValidateExistedAsync(id);
+        if (serviceResult.IsFailed || serviceResult.IsException)
             return NotFound(id);
-        return Ok(results);
+        return Ok(serviceResult.Data);
     }
 
     [HttpPost]
@@ -41,10 +43,11 @@ public class FoodGroupController: ControllerBase
     [Route("food-groups/{id:int}/edit")]
     public async Task<IActionResult> Edit([FromRoute] int id, [FromBody] FoodGroup foodGroup)
     {
-        var existed = await _foodGroupRepository.GetAsync(id, isTracked: false);
-        if (existed is null)
+        var serviceResult = await _foodGroupService.ValidateExistedAsync(id, isTracked: true);
+        if (serviceResult.IsFailed || serviceResult.IsException)
             return NotFound(id);
-        var result = await _foodGroupRepository.EditAsync(foodGroup);
+        var foodGroupTracked = serviceResult.Data;
+        var result = await _foodGroupRepository.EditAsync(foodGroupTracked);
         return Ok(result);
     }
 
@@ -52,9 +55,10 @@ public class FoodGroupController: ControllerBase
     [Route("food-groups/{id:int}/delete")]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
-        var existed = await _foodGroupRepository.GetAsync(id, isTracked: true);
-        if (existed is null)
+        var serviceResult = await _foodGroupService.ValidateExistedAsync(id, isTracked: true);
+        if (serviceResult.IsFailed || serviceResult.IsException)
             return NotFound(id);
+        var existed = serviceResult.Data;
         var isSuccess = await _foodGroupRepository.DeleteAsync(existed);
         return NoContent();
     }
